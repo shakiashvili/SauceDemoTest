@@ -1,0 +1,57 @@
+name: Test and Allure Report
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  run-tests-and-report:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: ⬇️ Checkout code
+      uses: actions/checkout@v3
+
+    - name: 🐍 Set up Python
+      # Use the setup-python action to install a specific Python version
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9' # Specify the version of Python you need
+
+    - name: 🛠️ Install Python dependencies
+      # Install the required packages from requirements.txt, including allure-pytest
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: ⚙️ Install Allure command-line tool
+      # This action installs the Allure CLI, removing the need for manual wget and sudo commands
+      uses: allure-framework/allure-action@v2
+      with:
+        allure_version: 2.17.2 # Specify the version you need
+        
+    - name: 🧪 Run tests and generate Allure report
+      # The allure command is now available on the PATH
+      run: |
+        pytest
+        allure generate --clean -o allure-report
+
+    - name: 📤 Upload Allure report
+      # Upload the generated report as a GitHub artifact
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: allure-report
+        path: allure-report
+        retention-days: 5
+
+    - name: 🌐 Deploy to GitHub Pages
+      if: success()
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: allure-report
