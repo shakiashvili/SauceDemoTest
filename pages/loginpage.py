@@ -1,5 +1,8 @@
 from selenium.webdriver.common.by import By 
 from .basepage import BasePage
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 
 
 class LoginPage(BasePage):
@@ -22,8 +25,6 @@ class LoginPage(BasePage):
         self.click(self.login_button_locator)
     
     def get_login_error(self):
-        try:
-            error_element = self.find_element(self.login_error_locator)
-            return error_element.text
-        except Exception as e:
-            return None
+        error_element = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(self.login_error_locator))
+
+        return error_element.text
