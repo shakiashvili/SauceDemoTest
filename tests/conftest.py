@@ -10,9 +10,10 @@ from selenium.webdriver.chrome.options import Options
 
 @pytest.fixture(scope="session")
 def driver():
-    options = Options()
-    options.add_argument("--guest")
-    driver = webdriver.Chrome(options=options)
+    #  Add this while running tests in locally
+    # options = Options()
+    # options.add_argument("--guest")
+    driver = webdriver.Chrome()
     yield driver
     driver.quit()
 
