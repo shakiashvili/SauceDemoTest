@@ -3,16 +3,17 @@ import json
 import os
 from selenium import webdriver
 
-from selenium.webdriver.chrome.options import Options
 
+# from selenium.webdriver.chrome.options import Options
+ #  Add this while running tests in locally
+    # options = Options()
+    # options.add_argument("--guest")
 
 
 
 @pytest.fixture(scope="session")
 def driver():
-    #  Add this while running tests in locally
-    # options = Options()
-    # options.add_argument("--guest")
+   
     driver = webdriver.Chrome()
     yield driver
     driver.quit()
