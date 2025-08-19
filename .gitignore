@@ -1,2 +1,7 @@
 env/
 .vscode/
+__pycache__/
+.pytest_cache/
+%allure-results/
+*.log
+%allure_result_folder%/

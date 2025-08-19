@@ -1,0 +1,21 @@
+{
+    "login":{
+        "valid_user": {
+            "username": "standard_user",
+            "password": "secret_sauce"
+        },
+        "invalid_user": {
+            "username": "locked_out_user",
+            "password": "secret_sauce"
+        }
+    },
+    "checkout_user": {
+        "shipping_info":{
+            "first_name": "John",
+            "last_name": "Doe",
+            "postal_code": "12345"
+            }
+      },
+      "error_message":"Epic sadface: Sorry, this user has been locked out.",
+      "completion_message": "Thank you for your order!"
+}
