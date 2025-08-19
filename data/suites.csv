@@ -1,0 +1,8 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"Testing sorting by price Z to A","190","test_sorting_products_by_name_reversed","tests","Tue Aug 19 18:45:14 UTC 2025","passed","Tue Aug 19 18:45:14 UTC 2025","","test_file","",""
+"","2161","test_login_page","tests","Tue Aug 19 18:45:11 UTC 2025","passed","Tue Aug 19 18:45:14 UTC 2025","","test_file","",""
+"Testing sorting by price low to high","190","test_sorting_products_by_price_low_to_high","tests","Tue Aug 19 18:45:14 UTC 2025","passed","Tue Aug 19 18:45:14 UTC 2025","","test_file","",""
+"Testing sorting by price high to low","183","test_sorting_products_by_price_high_to_low","tests","Tue Aug 19 18:45:14 UTC 2025","passed","Tue Aug 19 18:45:14 UTC 2025","","test_file","",""
+"Testing sorting by price A To Z","227","test_sorting_products_by_name","tests","Tue Aug 19 18:45:14 UTC 2025","passed","Tue Aug 19 18:45:14 UTC 2025","","test_file","",""
+"Testing whole checkout process and assert price is included in text e.g('total $15.29')","517","test_checkout_process","tests","Tue Aug 19 18:45:14 UTC 2025","passed","Tue Aug 19 18:45:15 UTC 2025","","test_file","",""
+"Testing locked user login and an error message","230","test_login_page_invalid_user","tests","Tue Aug 19 18:45:15 UTC 2025","passed","Tue Aug 19 18:45:15 UTC 2025","","test_locked_user","",""
