@@ -1,5 +1,4 @@
-# .github/workflows/tests-with-allure-no-docker.yml
-name: Test and Allure Report (No Docker)
+name: Test and Allure Report
 
 on:
   push:
@@ -32,8 +31,8 @@ jobs:
     - name: ⚙️ Install Allure command-line tool
       # This action installs the Allure CLI, removing the need for manual wget and sudo commands
       uses: allure-framework/allure-action@v2
-      with:
-        allure_version: 2.17.2 # Specify the version you need
+      # with:
+      #   allure_version: 2.17.2 # Specify the version you need
         
     - name: 🧪 Run tests and generate Allure report
       # The allure command is now available on the PATH
@@ -43,7 +42,7 @@ jobs:
 
     - name: 📤 Upload Allure report
       # Upload the generated report as a GitHub artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       if: always()
       with:
         name: allure-report
@@ -54,5 +53,5 @@ jobs:
       if: success()
       uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.TOKEN }}
         publish_dir: allure-report
