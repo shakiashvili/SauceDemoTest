@@ -26,14 +26,6 @@ def driver():
 
 
 @pytest.fixture(scope="session")
-def driver():
-   
-    driver = webdriver.Chrome()
-    yield driver
-    driver.quit()
-
-
-@pytest.fixture(scope="session")
 def test_data():
 
     file_path = os.path.join(os.path.dirname(__file__), "..", "data", "testdata.json")
