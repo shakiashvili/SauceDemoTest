@@ -8,6 +8,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   run-tests-and-report:
     runs-on: ubuntu-latest
@@ -26,14 +29,14 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Install Allure CLI
+    - name: 📥 Install Allure CLI
       run: |
         mkdir -p $HOME/.allure
         wget -qO- https://github.com/allure-framework/allure2/releases/download/2.34.1/allure-2.34.1.tgz \
           | tar xz -C $HOME/.allure --strip-components=1
         echo "$HOME/.allure/bin" >> $GITHUB_PATH
 
-    - name: Run tests and generate Allure report
+    - name: 🧪 Run tests and generate Allure report
       run: |
         set +e
         pytest --alluredir=allure-results
@@ -42,7 +45,7 @@ jobs:
         set -e
         exit $TEST_EXIT_CODE
 
-    - name: 📤 Upload Allure report
+    - name: 📤 Upload Allure report as artifact
       if: always()
       uses: actions/upload-artifact@v4
       with:
@@ -50,10 +53,10 @@ jobs:
         path: allure-report
         retention-days: 5
 
-    - name: 🌐 Deploy to GitHub Pages
+    - name: 🌐 Deploy Allure report to GitHub Pages
       if: always()
       uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: ${{ secrets.GH}}
+        github_token: ${{ secrets.GITHUB_TOKEN }}   # ✅ use built-in token
         publish_dir: allure-report
         publish_branch: gh-pages
