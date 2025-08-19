@@ -35,8 +35,12 @@ jobs:
 
     - name: Run tests and generate Allure report
       run: |
-        pytest --alluredir=allure-results || true
+        set +e
+        pytest --alluredir=allure-results
+        TEST_EXIT_CODE=$?
         allure generate allure-results --clean -o allure-report
+        set -e
+        exit $TEST_EXIT_CODE
 
     - name: 📤 Upload Allure report
       if: always()
