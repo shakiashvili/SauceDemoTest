@@ -31,7 +31,7 @@ jobs:
 
     - name: ⚙️ Install Allure command-line tool
       # This action installs the Allure CLI, removing the need for manual wget and sudo commands
-      uses: allure-framework/allure-github-action@v2
+      uses: allure-framework/allure-action@v2
       with:
         allure_version: 2.17.2 # Specify the version you need
         
