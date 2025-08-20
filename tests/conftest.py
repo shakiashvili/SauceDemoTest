@@ -7,11 +7,24 @@ from selenium.webdriver.chrome.options import Options
 
 @pytest.fixture(scope="session")
 def driver():
-    options = Options()
+    chrome_options = Options()
+    chrome_options.add_argument("--guest")
 
-    driver = webdriver.Chrome(options=options)
+    prefs = {
+        "credentials_enable_service": False,
+        "profile.password_manager_enabled": False
+    }
+    chrome_options.add_experimental_option("prefs", prefs)
+
+    chrome_options.add_argument("--headless=new")   
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+
+    driver = webdriver.Chrome(options=chrome_options)
     yield driver
     driver.quit()
+
+
 
 
 @pytest.fixture(scope="session")
