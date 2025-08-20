@@ -3,6 +3,8 @@
 ### Have used a separate test data JSON file for saving login information and messages, then in the conftest file
 ### I have created a fixture to return test data
 
+### To see allure report - visit: https://shakiashvili.github.io/SauceDemoTest/
+
 ## To run it locally, follow the instructions:
 ### It is highly recommended to have a virtual environment, leaving the code for activation
 `python -m venv venv`
@@ -15,5 +17,6 @@
 `pip install allure-pytest`
 `pytest --alluredir=allure-results .`
 `allure serve allure-results`
+
 
 
